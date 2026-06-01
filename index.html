@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Khushi Gupta — Cloud & DevOps Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #30364f;
+    --navy-deep: #22273a;
+    --bluegrey: #acb4c4;
+    --beige: #e1d9bc;
+    --cream: #f0f0db;
+
+    --ink: #30364f;
+    --ink-soft: #4a5168;
+    --ink-muted: #7a8399;
+    --surface: #f0f0db;
+    --surface-card: #f9f8f0;
+    --accent: #30364f;
+    --accent-glow: #4a5168;
+    --accent-light: #e8e6d8;
+    --accent-soft: #acb4c4;
+    --green: #3a5a4a;
+    --green-light: #dce8df;
+    --amber: #6a5a30;
+    --amber-light: #ede7ce;
+    --border: rgba(48,54,79,0.10);
+    --border-strong: rgba(48,54,79,0.18);
+    --radius: 14px;
+    --radius-lg: 22px;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --shadow: 0 2px 20px rgba(48,54,79,0.08);
+    --shadow-hover: 0 8px 32px rgba(48,54,79,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: #e1d9bc;
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: #30364f;
+    color: #f0f0db !important;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: #acb4c4 !important; color: #30364f !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 5vw 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #e1d9bc;
+    color: #30364f;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+    border: 1px solid #acb4c4;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 5.5vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color:black;
+    margin-bottom: 12px;
+  }
+  .hero-name .line2 { color: var(--accent); }
+  .hero-role {
+    font-size: 20px;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 24px;
+    letter-spacing: -0.3px;
+  }
+  .hero-desc {
+    font-size: 15.5px;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    max-width: 440px;
+    margin-bottom: 36px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+  }
+  .btn-primary {
+    background: #30364f;
+    color: #f0f0db;
+    box-shadow: 0 4px 18px rgba(48,54,79,0.25);
+  }
+  .btn-primary:hover { background: #22273a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(48,54,79,0.3); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--border-strong);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .avatar-wrap {
+    position: relative;
+    width: 380px;
+    height: 380px;
+  }
+  .avatar-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+    background: linear-gradient(135deg, #e1d9bc, #acb4c4);
+    animation: morph 8s ease-in-out infinite;
+  }
+  @keyframes morph {
+    0%,100% { border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; }
+    25% { border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%; }
+    50% { border-radius: 50% 50% 70% 30% / 50% 70% 30% 50%; }
+    75% { border-radius: 30% 70% 30% 70% / 70% 30% 70% 30%; }
+  }
+  .avatar-initials {
+    position: absolute;
+    inset: 40px;
+    border-radius: 22px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #30364f;
+  }
+  .float-badge {
+    position: absolute;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    animation: float 4s ease-in-out infinite;
+  }
+  .float-badge .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .fb1 { top: 20px; right: -20px; animation-delay: 0s; }
+  .fb2 { bottom: 40px; left: -30px; animation-delay: 1.5s; }
+  .fb3 { top: 50%; right: -40px; animation-delay: 0.8s; }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* STATS STRIP */
+  .stats-strip {
+    background: #30364f;
+    color: white;
+    padding: 32px 5vw;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 48px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -1px;
+  }
+  .stat-num span { color: #acb4c4; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 400; letter-spacing: 0.3px; }
+
+  /* SECTION COMMON */
+  section { padding: 96px 5vw; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .section-label::before { content: ''; display: block; width: 20px; height: 2px; background: #30364f; border-radius: 2px; }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--ink-muted);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  /* SKILLS */
+  #skills { background: #e1d9bc; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .skill-card {
+    background: #f0f0db;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    transition: all 0.25s;
+    cursor: default;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: #acb4c4; }
+  .skill-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .skill-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: white;
+    border: 1px solid var(--border-strong);
+    color: var(--ink-soft);
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--surface); }
+  .exp-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 48px;
+    transition: box-shadow 0.25s;
+  }
+  .exp-card:hover { box-shadow: var(--shadow-hover); }
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: #30364f;
+    border-radius: 4px 0 0 4px;
+  }
+  .exp-role {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+  .exp-company { font-size: 14px; font-weight: 500; color: var(--accent); margin-bottom: 4px; }
+  .exp-period {
+    font-size: 12px;
+    color: var(--ink-muted);
+    background: var(--surface);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+  }
+  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .exp-list li {
+    font-size: 15px;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .exp-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* PROJECTS */
+  #projects { background: #e1d9bc; }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    position: relative;
+    transition: all 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: #acb4c4; background: #f0f0db; }
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .project-emoji {
+    font-size: 28px;
+    width: 52px; height: 52px;
+    background: #e1d9bc;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .project-year {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    letter-spacing: 0.5px;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+  .project-name {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .project-desc { font-size: 14.5px; color: var(--ink-muted); line-height: 1.65; margin-bottom: 20px; flex: 1; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: #e1d9bc;
+    color: #30364f;
+    border: 1px solid #acb4c4;
+  }
+
+  /* CERTIFICATIONS */
+  #certs { background: var(--surface); }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .cert-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: all 0.2s;
+  }
+  .cert-card:hover { border-color: #acb4c4; box-shadow: var(--shadow-hover); }
+  .cert-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    background: var(--accent-light);
+  }
+  .cert-name { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.4; margin-bottom: 4px; }
+  .cert-name a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
+  .cert-name a:hover { color: var(--accent); }
+  .cert-issuer { font-size: 12px; color: var(--ink-muted); }
+
+  /* EDUCATION */
+  #education { background: #e1d9bc; }
+  .edu-list { display: flex; flex-direction: column; margin-top: 48px; max-width: 620px; }
+  .edu-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  .edu-row:first-child { border-top: 1px solid var(--border); }
+  .edu-num { font-size: 11px; font-weight: 300; color: var(--ink-muted); letter-spacing: 1px; min-width: 28px; padding-top: 3px; }
+  .edu-body { flex: 1; }
+  .edu-degree { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.2px; }
+  .edu-school { font-size: 13.5px; font-weight: 300; color: var(--ink-soft); margin-bottom: 6px; }
+  .edu-year { font-size: 11.5px; font-weight: 400; color: var(--accent); letter-spacing: 0.3px; }
+
+  /* CONTACT */
+  #contact { background: #30364f; }
+  .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .contact-label { color: #acb4c4 !important; }
+  .contact-title { color: white; }
+  .contact-sub { color: rgba(255,255,255,0.55); margin: 0 auto 40px; }
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .cl-email { background: #e1d9bc; color: #30364f; }
+  .cl-email:hover { background: #f0f0db; transform: translateY(-2px); }
+  .cl-linkedin { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.15); }
+  .cl-linkedin:hover { background: rgba(255,255,255,0.18); }
+  .cl-phone { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.15); }
+  .cl-phone:hover { background: rgba(255,255,255,0.18); }
+
+  /* FOOTER */
+  footer {
+    background: #22273a;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 24px 5vw;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 100px 5vw 60px; text-align: center; }
+    .hero-visual { display: none; }
+    .hero-desc { margin: 0 auto 36px; }
+    .hero-actions { justify-content: center; }
+    .stats-strip { flex-wrap: wrap; gap: 0; }
+    .stat-item { padding: 16px 28px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); width: 50%; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><img src="image/logomy.jpeg" alt="Khushi Gupta" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover;"></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Open to Internships & Full-time Roles</div>
+    <h1 class="hero-name">
+      Khushi<br/>
+      <span class="line2">Gupta</span>
+    </h1>
+    <p class="hero-role">Cloud Computing · DevOps · Full-stack Developer</p>
+    <p class="hero-desc">
+      B.Tech CSE student at IILM University specializing in Cloud Computing. I build scalable, containerized applications and love optimizing deployment pipelines with AWS, Docker, and modern DevOps practices.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:khushi.gupta.cs27@iilm.edu" class="btn btn-primary">✉ Get in Touch</a>
+      <a href="https://www.linkedin.com/in/khushigupta1112" target="_blank" class="btn btn-ghost">↗ LinkedIn</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="avatar-wrap">
+      <div class="avatar-bg"></div>
+      <img class="avatar-initials" src="image/mypicbg.png" alt="Khushi Gupta">
+      <div class="float-badge fb1"><div class="dot" style="background:#30364f"></div> AWS Certified</div>
+      <div class="float-badge fb2"><div class="dot" style="background:#acb4c4"></div> DevOps · Docker</div>
+      <div class="float-badge fb3"><div class="dot" style="background:#e1d9bc; border:1px solid #acb4c4"></div> UI/UX Intern</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">4<span>+</span></div>
+    <div class="stat-label">Projects Shipped</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4<span>+</span></div>
+    <div class="stat-label">AWS Certifications</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">2026</div>
+    <div class="stat-label">Available From</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5<span>+</span></div>
+    <div class="stat-label">Technologies</div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">What I Know</p>
+    <h2 class="section-title">Technical Skills</h2>
+    <p class="section-sub">A versatile toolkit spanning cloud infrastructure, backend development, and user experience design.</p>
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <div class="skill-icon" style="background:#eef1fd;">☁️</div>
+        <div class="skill-title">Cloud & DevOps</div>
+        <div class="skill-tags">
+          <span class="tag">AWS</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon" style="background:#e5f7ef;">💻</div>
+        <div class="skill-title">Languages</div>
+        <div class="skill-tags">
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+          <span class="tag">C</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon" style="background:#fdf0e5;">🌐</div>
+        <div class="skill-title">Web Development</div>
+        <div class="skill-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon" style="background:#fef3f2;">🗄️</div>
+        <div class="skill-title">Databases</div>
+        <div class="skill-tags">
+          <span class="tag">MySQL</span>
+          <span class="tag">Oracle</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon" style="background:#f3f0ff;">🔧</div>
+        <div class="skill-title">Tools & Platforms</div>
+        <div class="skill-tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">IntelliJ</span>
+          <span class="tag">Figma</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon" style="background:#eef1fd;">🧠</div>
+        <div class="skill-title">Core Concepts</div>
+        <div class="skill-tags">
+          <span class="tag">DSA</span>
+          <span class="tag">OOP</span>
+          <span class="tag">UI/UX Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Where I've Worked</p>
+    <h2 class="section-title">Work Experience</h2>
+    <p class="section-sub">Hands-on experience delivering real-world design solutions in a professional environment.</p>
+    <div class="exp-card fade-in">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+        <div>
+          <div class="exp-role">UI/UX Intern</div>
+          <div class="exp-company">PIXIRAIN | Design</div>
+          <div class="exp-period">Jan 2026 – Mar 2026</div>
+        </div>
+        <span style="background:var(--green-light);color:var(--green);font-size:12px;font-weight:600;padding:6px 14px;border-radius:50px;">Design</span>
+      </div>
+      <ul class="exp-list">
+        <li>Designed user-friendly interfaces and improved overall user experience through detailed wireframes and interactive prototypes.</li>
+        <li>Conducted user research sessions and translated insights into intuitive, visually compelling design solutions.</li>
+        <li>Collaborated cross-functionally with developers to ensure design fidelity from concept through implementation.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">What I've Built</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">From zero-downtime deployments to social impact apps — I build things that matter.</p>
+    <div class="projects-grid">
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div class="project-emoji">🔵</div>
+          <span class="project-year">Apr 2026</span>
+        </div>
+        <div class="project-name">Blue-Green Deployment System</div>
+        <p class="project-desc">
+          Implemented a zero-downtime deployment pipeline using Blue-Green architecture. Containerized services with Docker and configured Nginx for intelligent traffic routing, enabling instant rollback capabilities and improved system reliability.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Docker</span>
+          <span class="stack-tag">Nginx</span>
+          <span class="stack-tag">DevOps</span>
+          <span class="stack-tag">Blue-Green</span>
+        </div>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div class="project-emoji">🍱</div>
+          <span class="project-year">Nov–Dec 2024</span>
+        </div>
+        <div class="project-name"><a href="https://github.com/Khushigupta1112/foodDonation" target="_blank">Ahhar — Food Donation App</a></div>
+        <p class="project-desc">
+          A social impact Android application that connects food donors with people in need nearby. Reduces food wastage by enabling the donation of surplus and leftover food to those who need it most.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Java</span>
+          <span class="stack-tag">Android</span>
+          <span class="stack-tag">Social Impact</span>
+        </div>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div class="project-emoji">⚖️</div>
+          <span class="project-year">Mar–Dec 2025</span>
+        </div>
+        <div class="project-name">NyaySrot — Women Safety App</div>
+        <p class="project-desc">
+          A comprehensive legal assistance and safety app for women. Provides information on Indian and international laws, and offers categorized issue reporting for harassment, abuse, mental health crises, and more.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Figma</span>
+          <span class="stack-tag">UI/UX</span>
+          <span class="stack-tag">Women Safety</span>
+        </div>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div class="project-emoji">☕</div>
+          <span class="project-year">Mar 2026</span>
+        </div>
+        <div class="project-name"><a href="https://stately-gelato-2cc34f.netlify.app" target="_blank">Kahani&Coffee</a></div>
+        <p class="project-desc">
+          A mountain-themed café web app where users scan a QR code to view the menu, add items to cart, and place orders. Includes order tracking, payment options, and an admin dashboard. Built using HTML, CSS, and JavaScript with a clean, user-friendly UI.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">HTML5</span>
+          <span class="stack-tag">CSS3</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">Netlify</span>
+          <span class="stack-tag">Git</span>
+          <span class="stack-tag">GitHub</span>
+          <span class="stack-tag">QR Code Generator</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="section-inner">
+    <p class="section-label">Credentials</p>
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-sub">Continuously learning and validating skills through recognized programs.</p>
+    <div class="certs-grid">
+      <div class="cert-card fade-in">
+        <div class="cert-icon">☁️</div>
+        <div>
+          <div class="cert-name"><a href="https://drive.google.com/file/d/1z5YQawmrWnJjNeXDblmzDAgPQySU4nxr/view?usp=sharing" target="_blank">AWS Academy Cloud Foundations</a></div>
+          <div class="cert-issuer">AWS Academy · 2026</div>
+        </div>
+      </div>
+      <div class="cert-card fade-in">
+        <div class="cert-icon">🏗️</div>
+        <div>
+          <div class="cert-name"><a href="https://drive.google.com/file/d/19AUN5FnougFt-ujYvGJhl4Rc_CVS2qBB/view?usp=sharing" target="_blank">AWS Academy Cloud Architecting</a></div>
+          <div class="cert-issuer">AWS Academy · 2026</div>
+        </div>
+      </div>
+      <div class="cert-card fade-in">
+        <div class="cert-icon">🎖️</div>
+        <div>
+          <div class="cert-name">AWS Academy Certification</div>
+          <div class="cert-issuer">AWS Academy · 2025</div>
+        </div>
+      </div>
+      <div class="cert-card fade-in">
+        <div class="cert-icon">🧩</div>
+        <div>
+          <div class="cert-name"><a href="https://drive.google.com/file/d/1Bb-l0-iwDW3KqTQzL2YeR5eivHHD8I8W/view?usp=sharing" target="_blank">Data Structures & Algorithms</a></div>
+          <div class="cert-issuer">DataFlair · 2024</div>
+        </div>
+      </div>
+      <div class="cert-card fade-in">
+        <div class="cert-icon">🐍</div>
+        <div>
+          <div class="cert-name"><a href="https://drive.google.com/file/d/1BkA1-A0RHEwb6J4A5yAYLwDeRszIpxkx/view?usp=sharing" target="_blank">Python Programming</a></div>
+          <div class="cert-issuer">DataFlair · 2024</div>
+        </div>
+      </div>
+      <div class="cert-card fade-in">
+        <div class="cert-icon">☕</div>
+        <div>
+          <div class="cert-name"><a href="https://drive.google.com/file/d/1BORLmxxxhkcz7w4FTo2ssAIpBHoZrpHW/view?usp=sharing" target="_blank">Java OOP Concepts</a></div>
+          <div class="cert-issuer">Infosys Springboard · 2024</div>
+        </div>
+      </div>
+      <div class="cert-card fade-in">
+        <div class="cert-icon">�️</div>
+        <div>
+          <div class="cert-name"><a href="https://drive.google.com/file/d/1YVHvs5-00T4blYtKPbQGAi2iraA4_iKx/view?usp=sharing" target="_blank">Oracle Certified Foundation Associate</a></div>
+          <div class="cert-issuer">Oracle University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <p class="section-label">Academic Background</p>
+    <h2 class="section-title">Education</h2>
+    <p class="section-sub">A strong academic foundation in Computer Science and Engineering.</p>
+    <div class="edu-list">
+      <div class="edu-row fade-in">
+        <div class="edu-num">01</div>
+        <div class="edu-body">
+          <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+          <div class="edu-school">IILM University, Greater Noida</div>
+          <div class="edu-year">2023 – 2027 · Currently Enrolled</div>
+        </div>
+      </div>
+      <div class="edu-row fade-in">
+        <div class="edu-num">02</div>
+        <div class="edu-body">
+          <div class="edu-degree">12th Grade — CBSE</div>
+          <div class="edu-school">DAV Public School, Faridabad</div>
+          <div class="edu-year">2021 – 2022</div>
+        </div>
+      </div>
+      <div class="edu-row fade-in">
+        <div class="edu-num">03</div>
+        <div class="edu-body">
+          <div class="edu-degree">10th Grade — CBSE</div>
+          <div class="edu-school">BN Public School, Faridabad</div>
+          <div class="edu-year">2019 – 2020</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label contact-label">Let's Connect</p>
+    <h2 class="section-title contact-title">Open to Opportunities</h2>
+    <p class="section-sub contact-sub">Looking for internships and full-time roles in Cloud Computing, DevOps, or Software Development. Let's build something great together.</p>
+    <div class="contact-links">
+      <a href="mailto:khushi.gupta.cs27@iilm.edu" class="contact-link cl-email">✉ khushi.gupta.cs27@iilm.edu</a>
+      <a href="https://www.linkedin.com/in/khushigupta1112" target="_blank" class="contact-link cl-linkedin">↗ LinkedIn</a>
+      <a href="tel:+918527106672" class="contact-link cl-phone">📞 +91 85271 06672</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Designed & Built by Khushi Gupta &nbsp;·&nbsp; Greater Noida, Uttar Pradesh
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
